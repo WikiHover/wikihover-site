@@ -67,28 +67,49 @@
             transform: translateY(0);
         }
 
+        .source-tile {
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .source-tile:hover {
+            border-color: #BFDBFE !important;
+            box-shadow: 0 6px 20px rgba(37,99,235,0.09);
+            transform: translateY(-3px);
+        }
+
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-52px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(52px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .slide-left.visible, .slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         @media (max-width: 1023px) {
             #wikihover-canvas { display: none; }
         }
     </style>
 </head>
 <body class="bg-white text-slate-900 selection:bg-blue-100">
-    <script src="auth-gate.js"></script>
-
     <nav class="flex justify-between items-center px-10 py-5 sticky top-0 bg-white/95 backdrop-blur-md z-[2000]" style="border-bottom: 1px solid transparent; border-image: linear-gradient(to right, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent) 1;">
         <div class="flex items-center gap-2.5">
             <div class="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-lg" style="letter-spacing: -0.05em;">W</div>
             <span class="text-xl font-bold tracking-tight" style="color: var(--wh-heading);">wikiHover</span>
         </div>
         <div class="hidden lg:flex items-center gap-8 text-sm font-medium" style="color: var(--wh-body);">
-            <a href="#live-demo" class="nav-link hover:text-blue-600 transition-colors relative">Live Demo</a>
             <a href="#marketplace" class="nav-link hover:text-blue-600 transition-colors relative">Feed Marketplace</a>
             <a href="#publishers" class="nav-link hover:text-blue-600 transition-colors relative">For Publishers</a>
-            <a href="#live-demo" class="nav-link hover:text-blue-600 transition-colors relative">Developers</a>
+            <a href="#developers" class="nav-link hover:text-blue-600 transition-colors relative">Developers</a>
         </div>
         <div class="flex gap-3">
             <button class="px-5 py-2 rounded-xl text-sm font-medium transition-colors hover:bg-slate-100" style="color: var(--wh-body);">Log In</button>
-            <button class="px-5 py-2 rounded-xl text-sm font-semibold text-white transition-all" style="background: var(--wh-blue); box-shadow: 0 0 0 0 rgba(37,99,235,0.3);" onmouseover="this.style.background='#1D4ED8'; this.style.boxShadow='0 0 0 4px rgba(37,99,235,0.15)';" onmouseout="this.style.background='#2563EB'; this.style.boxShadow='0 0 0 0 rgba(37,99,235,0.3)';">Get Started</button>
+            <a href="https://publishers.wikihover.com" class="px-5 py-2 rounded-xl text-sm font-semibold text-white transition-all" style="background: var(--wh-blue); box-shadow: 0 0 0 0 rgba(37,99,235,0.3);" onmouseover="this.style.background='#1D4ED8'; this.style.boxShadow='0 0 0 4px rgba(37,99,235,0.15)';" onmouseout="this.style.background='#2563EB'; this.style.boxShadow='0 0 0 0 rgba(37,99,235,0.3)';">Get Started</a>
         </div>
     </nav>
 
@@ -102,9 +123,9 @@
         WikiHover turns any name on your page into a live knowledge card — zero code, infinite context.
     </p>
     <div class="flex flex-wrap gap-4 items-center">
-        <button class="flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all" style="background: var(--wh-blue); box-shadow: 0 4px 24px rgba(37,99,235,0.25);" onmouseover="this.style.background='#1D4ED8';" onmouseout="this.style.background='#2563EB';">
-            Get Early Access
-        </button>
+        <a href="https://publishers.wikihover.com" class="flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all" style="background: var(--wh-blue); box-shadow: 0 4px 24px rgba(37,99,235,0.25);" onmouseover="this.style.background='#1D4ED8';" onmouseout="this.style.background='#2563EB';">
+            Get Started Free
+        </a>
     </div>
 </div>
 
@@ -137,66 +158,91 @@
 </div>
     </header>
 
-    <section id="live-demo" class="py-16" style="background: linear-gradient(to bottom, #ffffff, var(--wh-section-bg));">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold" style="background: #DCFCE7; color: #166534;">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
-            Extension active on this page
-        </div>
-        <h2 class="text-3xl font-bold tracking-tight mb-3" style="color: var(--wh-heading); letter-spacing: -0.02em;">Try it live</h2>
-        <p class="mb-8 max-w-2xl text-base" style="color: var(--wh-body);">
-            The real WikiHover extension is running on this page. Hover any name below to see the actual tooltip with Wikipedia, TVMaze, IMDb, and Books data.
-        </p>
-        <div id="live-demo-content" class="bg-white rounded-2xl p-10 max-w-4xl" style="border: 1px solid #E2E8F0; box-shadow: 0 8px 40px rgba(15,23,42,0.06);">
-            <p class="text-lg leading-relaxed mb-6" style="color: #334155;">
-                Acclaimed actors like Bryan Cranston and Jennifer Aniston defined a generation of television, while film legends such as Tom Hanks and Meryl Streep set the gold standard for cinema. Directors like Steven Spielberg and Christopher Nolan have shaped how stories are told on screen.
-            </p>
-            <p class="text-lg leading-relaxed" style="color: #334155;">
-                Authors including Stephen King have captivated readers for decades, with countless adaptations bringing these worlds to life. Cultural icons like Oprah Winfrey have transcended their fields entirely. Athletes such as Serena Williams and LeBron James have become symbols of excellence far beyond their sport.
-            </p>
-        </div>
-    </div>
-</section>
+    <section id="marketplace" class="py-24" style="background: var(--wh-section-bg); border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9;">
+    <div class="max-w-5xl mx-auto px-6">
 
-    <section id="marketplace" class="py-20" style="background: var(--wh-section-bg); border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9;">
-    <div class="max-w-7xl mx-auto px-6 text-center mb-16 fade-up">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-6" style="border: 1px solid var(--wh-blue-border); color: var(--wh-blue); background: var(--wh-blue-tint);">
-            PLATFORM
+        <!-- Header -->
+        <div class="text-center mb-14 fade-up">
+            <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color: var(--wh-blue);">Feed Marketplace</p>
+            <h2 class="text-4xl font-bold tracking-tight mb-4" style="color: var(--wh-heading); letter-spacing: -0.02em;">Every source. One hover.</h2>
+            <p class="max-w-md mx-auto text-base leading-relaxed" style="color: var(--wh-body);">Install once and your readers get rich context from a growing library of live data sources.</p>
         </div>
-        <h2 class="text-4xl font-bold tracking-tight mb-5" style="color: var(--wh-heading); letter-spacing: -0.02em;">The Feed Marketplace</h2>
-        <p class="max-w-xl mx-auto text-base leading-relaxed" style="color: var(--wh-body);">
-            WikiHover is an open platform. Choose from dozens of data bridges to power your connection points. One installation, infinite context.
-        </p>
-    </div>
 
-    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6">
-        <!-- Card 1: Social Pulse -->
-        <div class="m-card p-8 relative group cursor-pointer fade-up" style="background: radial-gradient(ellipse at top left, rgba(239,246,255,0.8), white); border: 1px solid #E2E8F0; transition: all 0.35s ease; transition-delay: 0ms;">
-            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-7" style="border: 2px solid #FBCFE8; color: #EC4899;">
-                <i class="fa-brands fa-instagram text-lg"></i>
+        <!-- Source logo grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-12">
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-left" style="border: 1px solid #CBD5E1; transition-delay: 0ms;">
+                <img src="https://cdn.simpleicons.org/instagram/E4405F" style="width:34px;height:34px;" alt="Instagram">
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">Instagram</span>
             </div>
-            <h3 class="text-lg font-bold mb-3" style="color: var(--wh-heading);">Social Pulse</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--wh-body);">Streams real-time Reels, Stories, and Bio data for identified people and brands. Boosts session time by 22%.</p>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-left" style="border: 1px solid #CBD5E1; transition-delay: 60ms;">
+                <img src="https://cdn.simpleicons.org/tiktok/000000" style="width:34px;height:34px;" alt="TikTok">
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">TikTok</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default fade-up" style="border: 1px solid #CBD5E1; transition-delay: 120ms;">
+                <img src="https://cdn.simpleicons.org/x/000000" style="width:34px;height:34px;" alt="X">
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">X / Twitter</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-right" style="border: 1px solid #CBD5E1; transition-delay: 60ms;">
+                <img src="https://cdn.simpleicons.org/imdb/333333" style="width:34px;height:34px;" alt="IMDb">
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">IMDb</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-right" style="border: 1px solid #CBD5E1; transition-delay: 0ms;">
+                <span style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:#0D9488;font-size:22px;"><i class="fa-solid fa-tv"></i></span>
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">TVMaze</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-left" style="border: 1px solid #CBD5E1; transition-delay: 0ms;">
+                <img src="https://cdn.simpleicons.org/wikipedia/333333" style="width:34px;height:34px;" alt="Wikipedia">
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">Wikipedia</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-left" style="border: 1px solid #CBD5E1; transition-delay: 60ms;">
+                <img src="https://cdn.simpleicons.org/wikidata/006699" style="width:34px;height:34px;" alt="Wikidata">
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">Wikidata</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default fade-up" style="border: 1px solid #CBD5E1; transition-delay: 120ms;">
+                <span style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:#EA580C;font-size:22px;"><i class="fa-solid fa-scale-balanced"></i></span>
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">Polymarket</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-right" style="border: 1px solid #CBD5E1; transition-delay: 60ms;">
+                <span style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:#22C55E;font-size:22px;"><i class="fa-solid fa-chart-line"></i></span>
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">Finance</span>
+            </div>
+            <div class="source-tile bg-white rounded-2xl p-5 flex flex-col items-center gap-3 cursor-default slide-right" style="border: 1px solid #CBD5E1; transition-delay: 0ms;">
+                <span style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:#7C3AED;font-size:22px;"><i class="fa-solid fa-lightbulb"></i></span>
+                <span class="text-xs font-semibold" style="color: var(--wh-heading);">Trivia</span>
+            </div>
         </div>
 
-        <!-- Card 2: Finance Engine (Popular badge) -->
-        <div class="m-card p-8 relative group cursor-pointer fade-up" style="background: radial-gradient(ellipse at top left, rgba(239,246,255,0.8), white); border: 1px solid #E2E8F0; transition: all 0.35s ease; transition-delay: 100ms;">
-            <div class="absolute top-5 right-5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest" style="background: var(--wh-blue-tint); color: var(--wh-blue);">Popular</div>
-            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-7" style="border: 2px solid #BBF7D0; color: #22C55E;">
-                <i class="fa-solid fa-chart-line text-lg"></i>
+        <!-- 3 category cards -->
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="rounded-2xl p-7 bg-white slide-left" style="border: 1px solid #CBD5E1;">
+                <h3 class="text-base font-bold mb-2" style="color: var(--wh-heading);">Social Media</h3>
+                <p class="text-sm leading-relaxed mb-6" style="color: var(--wh-body);">Real-time posts, reels, and profile snapshots for any person or brand — directly in the hover card.</p>
+                <div class="flex items-center gap-3">
+                    <img src="https://cdn.simpleicons.org/instagram/E4405F" style="width:20px;height:20px;" alt="Instagram">
+                    <img src="https://cdn.simpleicons.org/tiktok/000000" style="width:20px;height:20px;" alt="TikTok">
+                    <img src="https://cdn.simpleicons.org/x/000000" style="width:20px;height:20px;" alt="X">
+                </div>
             </div>
-            <h3 class="text-lg font-bold mb-3" style="color: var(--wh-heading);">Finance Engine</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--wh-body);">Brings live market caps, stock performance, and quarterly data to company entry points instantly.</p>
+            <div class="rounded-2xl p-7 bg-white fade-up" style="border: 1px solid #CBD5E1; transition-delay: 100ms;">
+                <h3 class="text-base font-bold mb-2" style="color: var(--wh-heading);">Entertainment</h3>
+                <p class="text-sm leading-relaxed mb-6" style="color: var(--wh-body);">Film credits, TV cast, ratings, and episode guides — instant context for any actor, director, or show.</p>
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center rounded px-1.5" style="background:#F5C518;height:20px;"><img src="https://cdn.simpleicons.org/imdb/000000" style="width:24px;height:14px;" alt="IMDb"></span>
+                    <span style="color:#0D9488;font-size:18px;line-height:1;"><i class="fa-solid fa-tv"></i></span>
+                </div>
+            </div>
+            <div class="rounded-2xl p-7 bg-white slide-right" style="border: 1px solid #CBD5E1;">
+                <h3 class="text-base font-bold mb-2" style="color: var(--wh-heading);">Knowledge & Markets</h3>
+                <p class="text-sm leading-relaxed mb-6" style="color: var(--wh-body);">From Wikipedia's knowledge base to live prediction markets, trivia facts, and financial data.</p>
+                <div class="flex items-center gap-3">
+                    <img src="https://cdn.simpleicons.org/wikipedia/333333" style="width:20px;height:20px;" alt="Wikipedia">
+                    <span style="color:#EA580C;font-size:18px;line-height:1;"><i class="fa-solid fa-scale-balanced"></i></span>
+                    <span style="color:#22C55E;font-size:18px;line-height:1;"><i class="fa-solid fa-chart-line"></i></span>
+                    <span style="color:#7C3AED;font-size:18px;line-height:1;"><i class="fa-solid fa-lightbulb"></i></span>
+                </div>
+            </div>
         </div>
 
-        <!-- Card 3: Core Knowledge -->
-        <div class="m-card p-8 relative group cursor-pointer fade-up" style="background: radial-gradient(ellipse at top left, rgba(239,246,255,0.9), #EFF6FF); border: 1px solid var(--wh-blue-border); transition: all 0.35s ease; transition-delay: 200ms;">
-            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-7" style="border: 2px solid var(--wh-blue-border); color: var(--wh-blue);">
-                <i class="fa-solid fa-book-open text-lg"></i>
-            </div>
-            <h3 class="text-lg font-bold mb-3" style="color: var(--wh-heading);">Core Knowledge</h3>
-            <p class="text-sm leading-relaxed" style="color: var(--wh-body);">The global reference layer. Integrates Wikipedia, Wikidata, and family trees for historical depth.</p>
-        </div>
     </div>
 </section>
 
@@ -269,46 +315,65 @@
         <h2 class="text-3xl font-bold tracking-tight mb-4" style="letter-spacing: -0.02em;">Ready to add context to your content?</h2>
         <p class="text-blue-100 mb-10 text-base leading-relaxed">Turn passive readers into engaged audiences with contextual intelligence — built right into your content.</p>
         <div class="flex flex-wrap justify-center gap-4">
-            <button class="px-7 py-3.5 rounded-xl text-sm font-semibold transition-all" style="background: white; color: var(--wh-blue);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform=''; this.style.boxShadow='';">Get Started Free</button>
-            <button class="px-7 py-3.5 rounded-xl text-sm font-semibold border-2 transition-all" style="border-color: rgba(255,255,255,0.4); color: white;" onmouseover="this.style.borderColor='white'; this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.4)'; this.style.background='';">Talk to Sales</button>
+            <a href="https://publishers.wikihover.com" class="px-7 py-3.5 rounded-xl text-sm font-semibold transition-all" style="background: white; color: var(--wh-blue);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform=''; this.style.boxShadow='';">Get Started Free</a>
         </div>
     </div>
 </section>
 
-    <footer class="text-white py-20" style="background: var(--wh-near-black); border-top: 1px solid rgba(148,163,184,0.1);">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 border-b border-slate-800 pb-20">
-            <div class="col-span-2">
-                <div class="flex items-center gap-2 mb-8">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">W</div>
-                    <span class="text-xl font-extrabold tracking-tighter">wikiHover</span>
-                </div>
-                <p class="text-slate-500 max-w-sm mb-10">Turning the static web into a connected, context-rich environment for everyone.</p>
-                <div class="flex gap-4">
-                    <i class="fa-brands fa-x-twitter text-slate-600 hover:text-white transition cursor-pointer"></i>
-                    <i class="fa-brands fa-github text-slate-600 hover:text-white transition cursor-pointer"></i>
-                    <i class="fa-brands fa-linkedin text-slate-600 hover:text-white transition cursor-pointer"></i>
-                </div>
+<section id="developers" class="py-20" style="background: var(--wh-near-black);">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="fade-up">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-6" style="border: 1px solid rgba(37,99,235,0.4); color: #60A5FA; background: rgba(37,99,235,0.1);">
+                FOR DEVELOPERS
             </div>
-            <div>
-                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-slate-400">Platform</h5>
-                <ul class="space-y-4 text-sm text-slate-500">
-                    <li><a href="#" class="hover:text-blue-400">Marketplace</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Feeds API</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Publisher SDK</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Case Studies</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-slate-400">Support</h5>
-                <ul class="space-y-4 text-sm text-slate-500">
-                    <li><a href="#" class="hover:text-blue-400">Documentation</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Help Center</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Status</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
-                </ul>
+            <h2 class="text-4xl font-bold tracking-tight leading-[1.15] mb-6" style="color: #F8FAFC; letter-spacing: -0.02em;">Build a Feed.<br><span style="color: #60A5FA;">Reach Every Publisher.</span></h2>
+            <p class="text-base leading-relaxed mb-4" style="color: #94A3B8;">
+                WikiHover is an open platform — anyone can develop and publish a data feed. If you have a unique data source, an API, or a knowledge graph, you can turn it into a feed that thousands of publishers can add to their sites with a single click.
+            </p>
+            <p class="text-base leading-relaxed mb-10" style="color: #94A3B8;">
+                Join the Feed Marketplace: list your feed, set your terms, and let publishers discover and subscribe to your data automatically.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://feedapi.wikihover.com/marketplace/login" class="flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all" style="background: #2563EB; box-shadow: 0 4px 24px rgba(37,99,235,0.3);" onmouseover="this.style.background='#1D4ED8';" onmouseout="this.style.background='#2563EB';">
+                    <i class="fa-solid fa-plug text-sm"></i>
+                    Publish Your Feed
+                </a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-6 py-10 flex justify-between items-center text-[10px] font-bold text-slate-700 uppercase tracking-widest">
+        <div class="fade-up grid grid-cols-1 gap-5">
+            <div class="rounded-2xl p-6 flex gap-5 items-start" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(148,163,184,0.1);">
+                <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background: rgba(37,99,235,0.15); color: #60A5FA;">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1.5" style="color: #F1F5F9;">Any Data Source</h4>
+                    <p class="text-sm leading-relaxed" style="color: #64748B;">REST APIs, databases, scraping pipelines — if you can expose it, we can host it as a feed.</p>
+                </div>
+            </div>
+            <div class="rounded-2xl p-6 flex gap-5 items-start" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(148,163,184,0.1);">
+                <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background: rgba(34,197,94,0.12); color: #4ADE80;">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1.5" style="color: #F1F5F9;">Instant Distribution</h4>
+                    <p class="text-sm leading-relaxed" style="color: #64748B;">Once listed, your feed is discoverable by every publisher in the WikiHover network — no sales cycle needed.</p>
+                </div>
+            </div>
+            <div class="rounded-2xl p-6 flex gap-5 items-start" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(148,163,184,0.1);">
+                <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background: rgba(168,85,247,0.12); color: #C084FC;">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-1.5" style="color: #F1F5F9;">Simple Integration API</h4>
+                    <p class="text-sm leading-relaxed" style="color: #64748B;">A clean REST contract: receive an entity name, return structured context. That's it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer style="background: var(--wh-near-black); border-top: 1px solid rgba(148,163,184,0.1);">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center text-[10px] font-bold text-slate-700 uppercase tracking-widest">
             <span>© 2026 WikiHover Contextual Systems</span>
             <span style="color: #334155;">Building the context layer for the open web.</span>
         </div>
@@ -536,7 +601,7 @@
   }, { threshold: 0.12 });
 
   function initFadeUp() {
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-up, .slide-left, .slide-right').forEach(el => observer.observe(el));
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFadeUp);

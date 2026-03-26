@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiHover | The Global Context Infrastructure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --wh-blue: #2563EB;
+            --wh-blue-dark: #1D4ED8;
+            --wh-blue-tint: #EFF6FF;
+            --wh-blue-border: #BFDBFE;
+            --wh-heading: #0F172A;
+            --wh-body: #475569;
+            --wh-section-bg: #F8FAFC;
+            --wh-near-black: #0A0F1E;
+        }
+
+        /* Standardize border radius — override Tailwind arbitrary radius classes on .m-card */
+        .m-card {
+            border-radius: 1rem !important;
+            transition: all 0.4s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #2563EB;
+            transition: width 0.25s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Button press micro-interaction */
+        button:active { transform: scale(0.97); }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        .m-card:hover {
+            transform: translateY(-6px) !important;
+            box-shadow: 0 20px 60px rgba(37,99,235,0.1) !important;
+            border-color: var(--wh-blue-border) !important;
+        }
+        .m-card:hover button {
+            background: var(--wh-blue) !important;
+            color: white !important;
+            border-color: var(--wh-blue) !important;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1023px) {
+            #wikihover-canvas { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 selection:bg-blue-100">
+    <script src="auth-gate.js"></script>
+
+    <nav class="flex justify-between items-center px-10 py-5 sticky top-0 bg-white/95 backdrop-blur-md z-[2000]" style="border-bottom: 1px solid transparent; border-image: linear-gradient(to right, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent) 1;">
+        <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-lg" style="letter-spacing: -0.05em;">W</div>
+            <span class="text-xl font-bold tracking-tight" style="color: var(--wh-heading);">wikiHover</span>
+        </div>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium" style="color: var(--wh-body);">
+            <a href="#live-demo" class="nav-link hover:text-blue-600 transition-colors relative">Live Demo</a>
+            <a href="#marketplace" class="nav-link hover:text-blue-600 transition-colors relative">Feed Marketplace</a>
+            <a href="#publishers" class="nav-link hover:text-blue-600 transition-colors relative">For Publishers</a>
+            <a href="#live-demo" class="nav-link hover:text-blue-600 transition-colors relative">Developers</a>
+        </div>
+        <div class="flex gap-3">
+            <button class="px-5 py-2 rounded-xl text-sm font-medium transition-colors hover:bg-slate-100" style="color: var(--wh-body);">Log In</button>
+            <button class="px-5 py-2 rounded-xl text-sm font-semibold text-white transition-all" style="background: var(--wh-blue); box-shadow: 0 0 0 0 rgba(37,99,235,0.3);" onmouseover="this.style.background='#1D4ED8'; this.style.boxShadow='0 0 0 4px rgba(37,99,235,0.15)';" onmouseout="this.style.background='#2563EB'; this.style.boxShadow='0 0 0 0 rgba(37,99,235,0.3)';">Get Started</button>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-6 pt-16 pb-20 grid lg:grid-cols-2 gap-16 items-center">
+        <div class="relative z-10">
+    <h1 class="font-extrabold leading-[1.08] mb-6" style="font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--wh-heading); letter-spacing: -0.03em;">
+        The web knows everything.<br>
+        <span style="color: var(--wh-blue);">Now so does your content.</span>
+    </h1>
+    <p class="text-lg leading-relaxed mb-10 max-w-lg" style="color: var(--wh-body);">
+        WikiHover turns any name on your page into a live knowledge card — zero code, infinite context.
+    </p>
+    <div class="flex flex-wrap gap-4 items-center">
+        <button class="flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white transition-all" style="background: var(--wh-blue); box-shadow: 0 4px 24px rgba(37,99,235,0.25);" onmouseover="this.style.background='#1D4ED8';" onmouseout="this.style.background='#2563EB';">
+            Get Early Access
+        </button>
+    </div>
+</div>
+
+        <div class="relative flex items-center justify-center" style="min-height: 520px;">
+    <canvas id="wikihover-canvas" style="position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 1.5rem;"></canvas>
+    <div class="relative z-10 bg-white/90 backdrop-blur-sm border rounded-2xl p-8 shadow-2xl w-full max-w-md" style="border-color: var(--wh-blue-border); box-shadow: 0 20px 60px rgba(37,99,235,0.08);">
+        <div class="flex items-center gap-2 mb-6">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 ml-3">Interactive Preview</span>
+        </div>
+        <article class="text-lg leading-[1.7] font-medium" style="color: var(--wh-heading);">
+            "Creative figures like <strong class="font-semibold">Bryan Cranston</strong> and <strong class="font-semibold">Tom Hanks</strong> have redefined storytelling in the streaming era. Authors like <strong class="font-semibold">Stephen King</strong> remind us the written word remains the most powerful gateway."
+        </article>
+        <p class="mt-4 text-xs font-medium" style="color: #94A3B8;">Hover the names above to see the real WikiHover tooltip.</p>
+        <div class="mt-8 pt-6 flex justify-between items-end" style="border-top: 1px solid #F1F5F9;">
+            <div>
+                <div class="text-[10px] font-bold uppercase tracking-widest mb-1" style="color: #94A3B8;">Live Engagement Boost</div>
+                <div id="hero-counter" class="text-3xl font-black tracking-tight" style="color: var(--wh-blue);">+0%</div>
+            </div>
+            <div class="text-right">
+                <div class="w-28 h-1.5 rounded-full overflow-hidden mb-1.5" style="background: #F1F5F9;">
+                    <div class="h-full rounded-full" style="width: 65%; background: var(--wh-blue);"></div>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #94A3B8;">Time on Page</span>
+            </div>
+        </div>
+    </div>
+</div>
+    </header>
+
+    <section id="live-demo" class="py-16" style="background: linear-gradient(to bottom, #ffffff, var(--wh-section-bg));">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold" style="background: #DCFCE7; color: #166534;">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+            Extension active on this page
+        </div>
+        <h2 class="text-3xl font-bold tracking-tight mb-3" style="color: var(--wh-heading); letter-spacing: -0.02em;">Try it live</h2>
+        <p class="mb-8 max-w-2xl text-base" style="color: var(--wh-body);">
+            The real WikiHover extension is running on this page. Hover any name below to see the actual tooltip with Wikipedia, TVMaze, IMDb, and Books data.
+        </p>
+        <div id="live-demo-content" class="bg-white rounded-2xl p-10 max-w-4xl" style="border: 1px solid #E2E8F0; box-shadow: 0 8px 40px rgba(15,23,42,0.06);">
+            <p class="text-lg leading-relaxed mb-6" style="color: #334155;">
+                Acclaimed actors like Bryan Cranston and Jennifer Aniston defined a generation of television, while film legends such as Tom Hanks and Meryl Streep set the gold standard for cinema. Directors like Steven Spielberg and Christopher Nolan have shaped how stories are told on screen.
+            </p>
+            <p class="text-lg leading-relaxed" style="color: #334155;">
+                Authors including Stephen King have captivated readers for decades, with countless adaptations bringing these worlds to life. Cultural icons like Oprah Winfrey have transcended their fields entirely. Athletes such as Serena Williams and LeBron James have become symbols of excellence far beyond their sport.
+            </p>
+        </div>
+    </div>
+</section>
+
+    <section id="marketplace" class="py-20" style="background: var(--wh-section-bg); border-top: 1px solid #F1F5F9; border-bottom: 1px solid #F1F5F9;">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-16 fade-up">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-6" style="border: 1px solid var(--wh-blue-border); color: var(--wh-blue); background: var(--wh-blue-tint);">
+            PLATFORM
+        </div>
+        <h2 class="text-4xl font-bold tracking-tight mb-5" style="color: var(--wh-heading); letter-spacing: -0.02em;">The Feed Marketplace</h2>
+        <p class="max-w-xl mx-auto text-base leading-relaxed" style="color: var(--wh-body);">
+            WikiHover is an open platform. Choose from dozens of data bridges to power your connection points. One installation, infinite context.
+        </p>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+        <!-- Card 1: Social Pulse -->
+        <div class="m-card p-8 relative group cursor-pointer fade-up" style="background: radial-gradient(ellipse at top left, rgba(239,246,255,0.8), white); border: 1px solid #E2E8F0; transition: all 0.35s ease; transition-delay: 0ms;">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-7" style="border: 2px solid #FBCFE8; color: #EC4899;">
+                <i class="fa-brands fa-instagram text-lg"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: var(--wh-heading);">Social Pulse</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--wh-body);">Streams real-time Reels, Stories, and Bio data for identified people and brands. Boosts session time by 22%.</p>
+        </div>
+
+        <!-- Card 2: Finance Engine (Popular badge) -->
+        <div class="m-card p-8 relative group cursor-pointer fade-up" style="background: radial-gradient(ellipse at top left, rgba(239,246,255,0.8), white); border: 1px solid #E2E8F0; transition: all 0.35s ease; transition-delay: 100ms;">
+            <div class="absolute top-5 right-5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest" style="background: var(--wh-blue-tint); color: var(--wh-blue);">Popular</div>
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-7" style="border: 2px solid #BBF7D0; color: #22C55E;">
+                <i class="fa-solid fa-chart-line text-lg"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: var(--wh-heading);">Finance Engine</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--wh-body);">Brings live market caps, stock performance, and quarterly data to company entry points instantly.</p>
+        </div>
+
+        <!-- Card 3: Core Knowledge -->
+        <div class="m-card p-8 relative group cursor-pointer fade-up" style="background: radial-gradient(ellipse at top left, rgba(239,246,255,0.9), #EFF6FF); border: 1px solid var(--wh-blue-border); transition: all 0.35s ease; transition-delay: 200ms;">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-7" style="border: 2px solid var(--wh-blue-border); color: var(--wh-blue);">
+                <i class="fa-solid fa-book-open text-lg"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-3" style="color: var(--wh-heading);">Core Knowledge</h3>
+            <p class="text-sm leading-relaxed" style="color: var(--wh-body);">The global reference layer. Integrates Wikipedia, Wikidata, and family trees for historical depth.</p>
+        </div>
+    </div>
+</section>
+
+<section id="publishers" class="py-20" style="background: linear-gradient(135deg, var(--wh-section-bg), white, rgba(239,246,255,0.3));">
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        <div class="order-2 lg:order-1 relative fade-up">
+            <div class="rounded-2xl p-10 text-white relative" style="background: var(--wh-near-black); border: 1px solid rgba(148,163,184,0.15); box-shadow: 0 25px 80px rgba(10,15,30,0.3), 0 0 0 1px rgba(37,99,235,0.08);">
+                <h4 class="text-xs font-bold uppercase tracking-widest mb-8" style="color: #475569;">Publisher ROI Simulation</h4>
+                <div class="space-y-7">
+                    <div>
+                        <div class="flex justify-between mb-2.5 text-xs font-semibold">
+                            <span style="color: #64748B;">Standard Page Retention</span>
+                            <span style="color: #475569;">1:42 avg</span>
+                        </div>
+                        <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: #1E293B;">
+                            <div class="roi-bar h-full rounded-full" data-width="35" style="width: 0%; background: #334155; transition: width 1.2s ease;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2.5 text-xs font-semibold">
+                            <span style="color: #60A5FA;">With WikiHover Bridge</span>
+                            <span style="color: #60A5FA;">5:18 avg</span>
+                        </div>
+                        <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: #1E293B;">
+                            <div class="roi-bar h-full rounded-full" data-width="88" style="width: 0%; background: linear-gradient(to right, #2563EB, #38BDF8); box-shadow: 0 0 16px rgba(59,130,246,0.5); transition: width 1.5s ease 0.2s;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-14 flex items-center gap-6">
+                    <div class="flex-1 text-center">
+                        <div class="roi-stat text-3xl font-black" data-target="40" data-suffix="%" data-prefix="+" style="color: #4ADE80;">+0%</div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest mt-1" style="color: #475569;">Ad Impressions</div>
+                    </div>
+                    <div class="w-px h-10" style="background: #1E293B;"></div>
+                    <div class="flex-1 text-center">
+                        <div class="roi-stat text-3xl font-black" data-target="60" data-suffix="%" data-prefix="-" style="color: #60A5FA;">-0%</div>
+                        <div class="text-[9px] font-bold uppercase tracking-widest mt-1" style="color: #475569;">Bounce Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-1 lg:order-2 fade-up">
+            <h2 class="text-4xl font-bold tracking-tight leading-[1.15] mb-8" style="color: var(--wh-heading); letter-spacing: -0.02em;">Stop Reader Abandonment.<br><span style="color: var(--wh-blue);">Maximize Engagement.</span></h2>
+            <div class="space-y-7">
+                <div class="flex gap-5">
+                    <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background: var(--wh-blue-tint); color: var(--wh-blue);">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-base mb-1.5" style="color: var(--wh-heading);">Dynamic Blending</h4>
+                        <p class="text-sm leading-relaxed" style="color: var(--wh-body);">The WikiHover layer adapts to your site's context. Our marketplace ensures entry points lead only to content your audience cares about.</p>
+                    </div>
+                </div>
+                <div class="flex gap-5">
+                    <div class="shrink-0 w-11 h-11 rounded-xl flex items-center justify-center" style="background: #F0FDF4; color: #22C55E;">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-base mb-1.5" style="color: var(--wh-heading);">Zero-Code Context</h4>
+                        <p class="text-sm leading-relaxed" style="color: var(--wh-body);">Install a single JS snippet. WikiHover automatically identifies entities and creates the bridges. No manual tagging, ever.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 text-center text-white fade-up" style="background: linear-gradient(135deg, #1D4ED8, #0EA5E9);">
+    <div class="max-w-2xl mx-auto px-6">
+        <h2 class="text-3xl font-bold tracking-tight mb-4" style="letter-spacing: -0.02em;">Ready to add context to your content?</h2>
+        <p class="text-blue-100 mb-10 text-base leading-relaxed">Turn passive readers into engaged audiences with contextual intelligence — built right into your content.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="px-7 py-3.5 rounded-xl text-sm font-semibold transition-all" style="background: white; color: var(--wh-blue);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform=''; this.style.boxShadow='';">Get Started Free</button>
+            <button class="px-7 py-3.5 rounded-xl text-sm font-semibold border-2 transition-all" style="border-color: rgba(255,255,255,0.4); color: white;" onmouseover="this.style.borderColor='white'; this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.4)'; this.style.background='';">Talk to Sales</button>
+        </div>
+    </div>
+</section>
+
+    <footer class="text-white py-20" style="background: var(--wh-near-black); border-top: 1px solid rgba(148,163,184,0.1);">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 border-b border-slate-800 pb-20">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">W</div>
+                    <span class="text-xl font-extrabold tracking-tighter">wikiHover</span>
+                </div>
+                <p class="text-slate-500 max-w-sm mb-10">Turning the static web into a connected, context-rich environment for everyone.</p>
+                <div class="flex gap-4">
+                    <i class="fa-brands fa-x-twitter text-slate-600 hover:text-white transition cursor-pointer"></i>
+                    <i class="fa-brands fa-github text-slate-600 hover:text-white transition cursor-pointer"></i>
+                    <i class="fa-brands fa-linkedin text-slate-600 hover:text-white transition cursor-pointer"></i>
+                </div>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-slate-400">Platform</h5>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-blue-400">Marketplace</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Feeds API</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Publisher SDK</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Case Studies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-xs uppercase tracking-widest text-slate-400">Support</h5>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="#" class="hover:text-blue-400">Documentation</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Help Center</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Status</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 py-10 flex justify-between items-center text-[10px] font-bold text-slate-700 uppercase tracking-widest">
+            <span>© 2026 WikiHover Contextual Systems</span>
+            <span style="color: #334155;">Building the context layer for the open web.</span>
+        </div>
+    </footer>
+
+    <script>
+/* =====================================================
+   WikiHover Particle Graph
+   Runs on the #wikihover-canvas element in the hero.
+   ===================================================== */
+(function () {
+  const canvas = document.getElementById('wikihover-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const BLUE = [37, 99, 235];
+  const NODE_COUNT = 75;
+  const MAX_DIST = 160;
+  const MOUSE_RADIUS = 140;
+  const FEATURED = ['Tom Hanks', 'Wikipedia', 'IMDb', '1956', 'Oscar'];
+
+  let W, H, nodes, mouse = { x: -999, y: -999 }, animId;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width  = rect.width;
+    H = canvas.height = rect.height;
+  }
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  function createNodes() {
+    nodes = Array.from({ length: NODE_COUNT }, (_, i) => ({
+      x: rand(0, W),
+      y: rand(0, H),
+      vx: rand(-0.3, 0.3),
+      vy: rand(-0.3, 0.3),
+      r: rand(2, 4.5),
+      opacity: rand(0.3, 0.8),
+      label: i < FEATURED.length ? FEATURED[i] : null,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw edges
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MAX_DIST) {
+          const alpha = (1 - dist / MAX_DIST) * 0.25;
+          ctx.strokeStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw nodes
+    nodes.forEach(n => {
+      const mx = n.x - mouse.x;
+      const my = n.y - mouse.y;
+      const md = Math.sqrt(mx * mx + my * my);
+      const isNearMouse = md < MOUSE_RADIUS;
+      const r = n.label ? (isNearMouse ? 7 : 5.5) : (isNearMouse ? n.r + 1.5 : n.r);
+      const op = isNearMouse ? Math.min(1, n.opacity + 0.4) : n.opacity;
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${BLUE[0]},${BLUE[1]},${BLUE[2]},${op})`;
+      ctx.fill();
+
+      if (n.label && (isNearMouse || n.opacity > 0.65)) {
+        ctx.font = '600 10px Inter, sans-serif';
+        ctx.fillStyle = `rgba(15,23,42,${op * 0.9})`;
+        ctx.fillText(n.label, n.x + r + 4, n.y + 4);
+      }
+    });
+  }
+
+  function update() {
+    nodes.forEach(n => {
+      // Mouse attraction
+      const mx = mouse.x - n.x;
+      const my = mouse.y - n.y;
+      const md = Math.sqrt(mx * mx + my * my);
+      if (md < MOUSE_RADIUS && md > 1) {
+        const force = (MOUSE_RADIUS - md) / MOUSE_RADIUS * 0.04;
+        n.vx += mx / md * force;
+        n.vy += my / md * force;
+      }
+
+      // Damping
+      n.vx *= 0.97;
+      n.vy *= 0.97;
+
+      n.x += n.vx;
+      n.y += n.vy;
+
+      // Bounce off edges
+      if (n.x < 0 || n.x > W) n.vx *= -1;
+      if (n.y < 0 || n.y > H) n.vy *= -1;
+      n.x = Math.max(0, Math.min(W, n.x));
+      n.y = Math.max(0, Math.min(H, n.y));
+    });
+  }
+
+  function loop() {
+    update();
+    draw();
+    animId = requestAnimationFrame(loop);
+  }
+
+  function init() {
+    resize();
+    createNodes();
+    loop();
+  }
+
+  // Mouse tracking (relative to canvas)
+  document.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+  document.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+
+  // Pause when tab hidden, resume when visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    } else {
+      cancelAnimationFrame(animId);
+      loop();
+    }
+  });
+
+  window.addEventListener('resize', () => { resize(); });
+
+  // Init after DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<script>
+/* Hero engagement counter counts up to +217% on load */
+(function () {
+  const el = document.getElementById('hero-counter');
+  if (!el) return;
+  const target = 217;
+  const duration = 1800;
+  const start = performance.now();
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = '+' + Math.round(eased * target) + '%';
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+
+  setTimeout(() => requestAnimationFrame(tick), 600);
+})();
+</script>
+<script>
+/* ROI section: animate bars and counters on scroll */
+(function () {
+  function countUp(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('.roi-bar').forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      entry.target.querySelectorAll('.roi-stat').forEach(countUp);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+
+  function initRoi() {
+    const section = document.getElementById('publishers');
+    if (section) observer.observe(section);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRoi);
+  } else {
+    initRoi();
+  }
+})();
+</script>
+    <script>
+/* Scroll fade-up observer */
+(function () {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  function initFadeUp() {
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFadeUp);
+  } else {
+    initFadeUp();
+  }
+})();
+</script>
+    <!-- Chrome API shim must load first so content.js can run without the extension -->
+    <script src="demo-shim.js"></script>
+    <script src="compromise.min.js"></script>
+    <script src="hebrew_names.js"></script>
+    <script src="content.js"></script>
+    <script>
+      /* WikiHover Demo: pre-warm Wikipedia cache so first hover is instant */
+      (function () {
+        const DEMO_NAMES = [
+          'Bryan Cranston', 'Jennifer Aniston', 'Tom Hanks', 'Meryl Streep',
+          'Steven Spielberg', 'Christopher Nolan', 'Stephen King',
+          'Oprah Winfrey', 'Serena Williams', 'LeBron James'
+        ];
+        const PREFIX = 'wikihover_demo_';
+
+        async function prewarmName(name) {
+          const storageKey = PREFIX + 'wiki_' + name;
+          if (localStorage.getItem(storageKey) !== null) return; // already warm — skip fetch
+
+          try {
+            const summaryResp = await fetch(
+              'https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(name)
+            );
+            if (!summaryResp.ok) return;
+            const data = await summaryResp.json();
+            if (!data || !data.title) return;
+
+            // Fetch full extract (matches content.js: exchars=4000 via w/api.php)
+            let extract = data.extract_html || data.extract || '';
+            try {
+              const extResp = await fetch(
+                'https://en.wikipedia.org/w/api.php?action=query&titles=' +
+                encodeURIComponent(data.title) +
+                '&prop=extracts&exchars=4000&exlimit=1&format=json&origin=*'
+              );
+              if (extResp.ok) {
+                const extData = await extResp.json();
+                const pages = extData.query && extData.query.pages;
+                if (pages) {
+                  const page = Object.values(pages)[0];
+                  if (page && page.extract) extract = page.extract;
+                }
+              }
+            } catch (e) { /* use summary extract as fallback */ }
+
+            const result = {
+              title: data.title,
+              description: data.description || '',
+              extract,
+              url: (data.content_urls && data.content_urls.desktop && data.content_urls.desktop.page) ||
+                   ('https://en.wikipedia.org/wiki/' + encodeURIComponent(data.title)),
+              thumbnail: data.thumbnail ? data.thumbnail.source : undefined,
+              originalimage: data.originalimage ? data.originalimage.source : '',
+              wikibase_item: data.wikibase_item || '',
+              timestamp: Date.now()
+            };
+            try { localStorage.setItem(storageKey, JSON.stringify(result)); } catch (e) {}
+          } catch (e) { /* silent — content.js fetches on demand if this fails */ }
+        }
+
+        DEMO_NAMES.forEach(prewarmName); // all fire in parallel
+      })();
+    </script>
+</body>
+</html>

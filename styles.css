@@ -1,0 +1,1963 @@
+/* === Theme variables — Light (default) === */
+.wikihover-tooltip,
+.wikihover-pinned-tooltip {
+  --wh-bg: #ffffff;
+  --wh-text: #333;
+  --wh-text-secondary: #666;
+  --wh-text-muted: #999;
+  --wh-content-text: #262626;
+  --wh-content-secondary: #536471;
+  --wh-border: #e5e5e5;
+  --wh-border-light: #eee;
+  --wh-header-bg: #f7f7f7;
+  --wh-tab-bg: #f5f5f5;
+  --wh-tab-hover-bg: #e8e8e8;
+  --wh-tab-active-bg: #fff;
+  --wh-accent: #0366d6;
+  --wh-link: #0645ad;
+  --wh-hover-bg: #f7f7f7;
+  --wh-card-bg: #f5f7fa;
+  --wh-glass-rgb: 255, 255, 255;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+.wikihover-tooltip[data-wikihover-theme="dark"],
+.wikihover-pinned-tooltip[data-wikihover-theme="dark"] {
+  --wh-bg: #1e1e1e;
+  --wh-text: #ffffff;
+  --wh-text-secondary: #ccc;
+  --wh-text-muted: #999;
+  --wh-content-text: #ffffff;
+  --wh-content-secondary: #bbb;
+  --wh-border: #444;
+  --wh-border-light: #333;
+  --wh-header-bg: #2a2a2a;
+  --wh-tab-bg: #252525;
+  --wh-tab-hover-bg: #333;
+  --wh-tab-active-bg: #1e1e1e;
+  --wh-accent: #58a6ff;
+  --wh-link: #58a6ff;
+  --wh-hover-bg: #2a2a2a;
+  --wh-card-bg: #252525;
+  --wh-glass-rgb: 20, 20, 20;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Pastel Blue theme */
+.wikihover-tooltip[data-wikihover-theme="pastel-blue"],
+.wikihover-pinned-tooltip[data-wikihover-theme="pastel-blue"] {
+  --wh-bg: #eef4fb;
+  --wh-text: #2c3e50;
+  --wh-text-secondary: #5a7a96;
+  --wh-text-muted: #7a9ab6;
+  --wh-content-text: #2c3e50;
+  --wh-content-secondary: #5a7a96;
+  --wh-border: #c8dae8;
+  --wh-border-light: #d8e6f0;
+  --wh-header-bg: #dce8f3;
+  --wh-tab-bg: #dce8f3;
+  --wh-tab-hover-bg: #c8dae8;
+  --wh-tab-active-bg: #eef4fb;
+  --wh-accent: #3a7bd5;
+  --wh-link: #3a7bd5;
+  --wh-hover-bg: #dce8f3;
+  --wh-card-bg: #dce8f3;
+  --wh-glass-rgb: 180, 210, 240;
+  --wh-shadow: 0 8px 32px rgba(44, 62, 80, 0.18), 0 2px 8px rgba(44, 62, 80, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(44, 62, 80, 0.22), 0 4px 12px rgba(44, 62, 80, 0.12);
+}
+
+/* Pastel Rose theme */
+.wikihover-tooltip[data-wikihover-theme="pastel-rose"],
+.wikihover-pinned-tooltip[data-wikihover-theme="pastel-rose"] {
+  --wh-bg: #fdf0f0;
+  --wh-text: #4a2c2c;
+  --wh-text-secondary: #8a6060;
+  --wh-text-muted: #b08080;
+  --wh-content-text: #4a2c2c;
+  --wh-content-secondary: #8a6060;
+  --wh-border: #e8c8c8;
+  --wh-border-light: #f0d8d8;
+  --wh-header-bg: #f3dce0;
+  --wh-tab-bg: #f3dce0;
+  --wh-tab-hover-bg: #e8c8c8;
+  --wh-tab-active-bg: #fdf0f0;
+  --wh-accent: #d5566a;
+  --wh-link: #d5566a;
+  --wh-hover-bg: #f3dce0;
+  --wh-card-bg: #f3dce0;
+  --wh-glass-rgb: 240, 200, 200;
+  --wh-shadow: 0 8px 32px rgba(74, 44, 44, 0.18), 0 2px 8px rgba(74, 44, 44, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(74, 44, 44, 0.22), 0 4px 12px rgba(74, 44, 44, 0.12);
+}
+
+/* Pastel Green theme */
+.wikihover-tooltip[data-wikihover-theme="pastel-green"],
+.wikihover-pinned-tooltip[data-wikihover-theme="pastel-green"] {
+  --wh-bg: #f0faf0;
+  --wh-text: #2c4a2c;
+  --wh-text-secondary: #608a60;
+  --wh-text-muted: #80b080;
+  --wh-content-text: #2c4a2c;
+  --wh-content-secondary: #608a60;
+  --wh-border: #c8e8c8;
+  --wh-border-light: #d8f0d8;
+  --wh-header-bg: #dcf3dc;
+  --wh-tab-bg: #dcf3dc;
+  --wh-tab-hover-bg: #c8e8c8;
+  --wh-tab-active-bg: #f0faf0;
+  --wh-accent: #3aad5a;
+  --wh-link: #3aad5a;
+  --wh-hover-bg: #dcf3dc;
+  --wh-card-bg: #dcf3dc;
+  --wh-glass-rgb: 200, 240, 200;
+  --wh-shadow: 0 8px 32px rgba(44, 74, 44, 0.18), 0 2px 8px rgba(44, 74, 44, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(44, 74, 44, 0.22), 0 4px 12px rgba(44, 74, 44, 0.12);
+}
+
+/* Pastel Lavender theme */
+.wikihover-tooltip[data-wikihover-theme="pastel-lavender"],
+.wikihover-pinned-tooltip[data-wikihover-theme="pastel-lavender"] {
+  --wh-bg: #f3f0fb;
+  --wh-text: #3a2c5a;
+  --wh-text-secondary: #7a60a0;
+  --wh-text-muted: #9a80c0;
+  --wh-content-text: #3a2c5a;
+  --wh-content-secondary: #7a60a0;
+  --wh-border: #d4c8e8;
+  --wh-border-light: #e0d8f0;
+  --wh-header-bg: #e6dcf3;
+  --wh-tab-bg: #e6dcf3;
+  --wh-tab-hover-bg: #d4c8e8;
+  --wh-tab-active-bg: #f3f0fb;
+  --wh-accent: #7c5ac7;
+  --wh-link: #7c5ac7;
+  --wh-hover-bg: #e6dcf3;
+  --wh-card-bg: #e6dcf3;
+  --wh-glass-rgb: 210, 200, 240;
+  --wh-shadow: 0 8px 32px rgba(58, 44, 90, 0.18), 0 2px 8px rgba(58, 44, 90, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(58, 44, 90, 0.22), 0 4px 12px rgba(58, 44, 90, 0.12);
+}
+
+/* Sunset theme */
+.wikihover-tooltip[data-wikihover-theme="sunset"],
+.wikihover-pinned-tooltip[data-wikihover-theme="sunset"] {
+  --wh-bg: #fef6ee;
+  --wh-text: #4a3520;
+  --wh-text-secondary: #8a6a48;
+  --wh-text-muted: #b89470;
+  --wh-content-text: #4a3520;
+  --wh-content-secondary: #8a6a48;
+  --wh-border: #e8d4be;
+  --wh-border-light: #f0e0cc;
+  --wh-header-bg: #f8e8d4;
+  --wh-tab-bg: #f8e8d4;
+  --wh-tab-hover-bg: #e8d4be;
+  --wh-tab-active-bg: #fef6ee;
+  --wh-accent: #e8721c;
+  --wh-link: #d0600a;
+  --wh-hover-bg: #f8e8d4;
+  --wh-card-bg: #f8e8d4;
+  --wh-glass-rgb: 240, 215, 180;
+  --wh-shadow: 0 8px 32px rgba(74, 53, 32, 0.18), 0 2px 8px rgba(74, 53, 32, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(74, 53, 32, 0.22), 0 4px 12px rgba(74, 53, 32, 0.12);
+}
+
+/* Ocean theme */
+.wikihover-tooltip[data-wikihover-theme="ocean"],
+.wikihover-pinned-tooltip[data-wikihover-theme="ocean"] {
+  --wh-bg: #eef8f7;
+  --wh-text: #1a3a38;
+  --wh-text-secondary: #4a7a76;
+  --wh-text-muted: #72a09c;
+  --wh-content-text: #1a3a38;
+  --wh-content-secondary: #4a7a76;
+  --wh-border: #b8dcd8;
+  --wh-border-light: #cce8e5;
+  --wh-header-bg: #d8eeec;
+  --wh-tab-bg: #d8eeec;
+  --wh-tab-hover-bg: #b8dcd8;
+  --wh-tab-active-bg: #eef8f7;
+  --wh-accent: #0d9488;
+  --wh-link: #0a7c72;
+  --wh-hover-bg: #d8eeec;
+  --wh-card-bg: #d8eeec;
+  --wh-glass-rgb: 180, 230, 225;
+  --wh-shadow: 0 8px 32px rgba(26, 58, 56, 0.18), 0 2px 8px rgba(26, 58, 56, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(26, 58, 56, 0.22), 0 4px 12px rgba(26, 58, 56, 0.12);
+}
+
+/* Cream theme */
+.wikihover-tooltip[data-wikihover-theme="cream"],
+.wikihover-pinned-tooltip[data-wikihover-theme="cream"] {
+  --wh-bg: #faf6f0;
+  --wh-text: #3e3428;
+  --wh-text-secondary: #7a6a52;
+  --wh-text-muted: #a09078;
+  --wh-content-text: #3e3428;
+  --wh-content-secondary: #7a6a52;
+  --wh-border: #ddd0be;
+  --wh-border-light: #e8dcc8;
+  --wh-header-bg: #f0e8d8;
+  --wh-tab-bg: #f0e8d8;
+  --wh-tab-hover-bg: #ddd0be;
+  --wh-tab-active-bg: #faf6f0;
+  --wh-accent: #b8860b;
+  --wh-link: #9a7009;
+  --wh-hover-bg: #f0e8d8;
+  --wh-card-bg: #f0e8d8;
+  --wh-glass-rgb: 245, 235, 215;
+  --wh-shadow: 0 8px 32px rgba(62, 52, 40, 0.18), 0 2px 8px rgba(62, 52, 40, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(62, 52, 40, 0.22), 0 4px 12px rgba(62, 52, 40, 0.12);
+}
+
+/* Solarized Light theme */
+.wikihover-tooltip[data-wikihover-theme="solarized-light"],
+.wikihover-pinned-tooltip[data-wikihover-theme="solarized-light"] {
+  --wh-bg: #fdf6e3;
+  --wh-text: #586e75;
+  --wh-text-secondary: #657b83;
+  --wh-text-muted: #93a1a1;
+  --wh-content-text: #586e75;
+  --wh-content-secondary: #657b83;
+  --wh-border: #d6cdb5;
+  --wh-border-light: #e6ddc5;
+  --wh-header-bg: #eee8d5;
+  --wh-tab-bg: #eee8d5;
+  --wh-tab-hover-bg: #d6cdb5;
+  --wh-tab-active-bg: #fdf6e3;
+  --wh-accent: #268bd2;
+  --wh-link: #268bd2;
+  --wh-hover-bg: #eee8d5;
+  --wh-card-bg: #eee8d5;
+  --wh-glass-rgb: 250, 240, 210;
+  --wh-shadow: 0 8px 32px rgba(88, 110, 117, 0.18), 0 2px 8px rgba(88, 110, 117, 0.1);
+  --wh-shadow-pinned: 0 12px 40px rgba(88, 110, 117, 0.22), 0 4px 12px rgba(88, 110, 117, 0.12);
+}
+
+/* Nord theme */
+.wikihover-tooltip[data-wikihover-theme="nord"],
+.wikihover-pinned-tooltip[data-wikihover-theme="nord"] {
+  --wh-bg: #2e3440;
+  --wh-text: #eceff4;
+  --wh-text-secondary: #d8dee9;
+  --wh-text-muted: #81a1c1;
+  --wh-content-text: #eceff4;
+  --wh-content-secondary: #d8dee9;
+  --wh-border: #4c566a;
+  --wh-border-light: #434c5e;
+  --wh-header-bg: #3b4252;
+  --wh-tab-bg: #3b4252;
+  --wh-tab-hover-bg: #434c5e;
+  --wh-tab-active-bg: #2e3440;
+  --wh-accent: #88c0d0;
+  --wh-link: #88c0d0;
+  --wh-hover-bg: #3b4252;
+  --wh-card-bg: #3b4252;
+  --wh-glass-rgb: 46, 52, 64;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Dracula theme */
+.wikihover-tooltip[data-wikihover-theme="dracula"],
+.wikihover-pinned-tooltip[data-wikihover-theme="dracula"] {
+  --wh-bg: #282a36;
+  --wh-text: #f8f8f2;
+  --wh-text-secondary: #d0d0cc;
+  --wh-text-muted: #6272a4;
+  --wh-content-text: #f8f8f2;
+  --wh-content-secondary: #d0d0cc;
+  --wh-border: #44475a;
+  --wh-border-light: #3a3c4e;
+  --wh-header-bg: #343746;
+  --wh-tab-bg: #343746;
+  --wh-tab-hover-bg: #44475a;
+  --wh-tab-active-bg: #282a36;
+  --wh-accent: #bd93f9;
+  --wh-link: #bd93f9;
+  --wh-hover-bg: #343746;
+  --wh-card-bg: #343746;
+  --wh-glass-rgb: 40, 42, 54;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Monokai theme */
+.wikihover-tooltip[data-wikihover-theme="monokai"],
+.wikihover-pinned-tooltip[data-wikihover-theme="monokai"] {
+  --wh-bg: #272822;
+  --wh-text: #f8f8f2;
+  --wh-text-secondary: #cfcfc2;
+  --wh-text-muted: #75715e;
+  --wh-content-text: #f8f8f2;
+  --wh-content-secondary: #cfcfc2;
+  --wh-border: #49483e;
+  --wh-border-light: #3e3d32;
+  --wh-header-bg: #3e3d32;
+  --wh-tab-bg: #3e3d32;
+  --wh-tab-hover-bg: #49483e;
+  --wh-tab-active-bg: #272822;
+  --wh-accent: #f92672;
+  --wh-link: #66d9ef;
+  --wh-hover-bg: #3e3d32;
+  --wh-card-bg: #3e3d32;
+  --wh-glass-rgb: 39, 40, 34;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Solarized Dark theme */
+.wikihover-tooltip[data-wikihover-theme="solarized-dark"],
+.wikihover-pinned-tooltip[data-wikihover-theme="solarized-dark"] {
+  --wh-bg: #002b36;
+  --wh-text: #93a1a1;
+  --wh-text-secondary: #839496;
+  --wh-text-muted: #586e75;
+  --wh-content-text: #93a1a1;
+  --wh-content-secondary: #839496;
+  --wh-border: #073642;
+  --wh-border-light: #073642;
+  --wh-header-bg: #073642;
+  --wh-tab-bg: #073642;
+  --wh-tab-hover-bg: #0a4a5a;
+  --wh-tab-active-bg: #002b36;
+  --wh-accent: #2aa198;
+  --wh-link: #2aa198;
+  --wh-hover-bg: #073642;
+  --wh-card-bg: #073642;
+  --wh-glass-rgb: 0, 43, 54;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Midnight theme */
+.wikihover-tooltip[data-wikihover-theme="midnight"],
+.wikihover-pinned-tooltip[data-wikihover-theme="midnight"] {
+  --wh-bg: #1a1b2e;
+  --wh-text: #c0caf5;
+  --wh-text-secondary: #a9b1d6;
+  --wh-text-muted: #565f89;
+  --wh-content-text: #c0caf5;
+  --wh-content-secondary: #a9b1d6;
+  --wh-border: #33355a;
+  --wh-border-light: #292b48;
+  --wh-header-bg: #24263e;
+  --wh-tab-bg: #24263e;
+  --wh-tab-hover-bg: #33355a;
+  --wh-tab-active-bg: #1a1b2e;
+  --wh-accent: #7aa2f7;
+  --wh-link: #7aa2f7;
+  --wh-hover-bg: #24263e;
+  --wh-card-bg: #24263e;
+  --wh-glass-rgb: 26, 27, 46;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* High Contrast theme */
+.wikihover-tooltip[data-wikihover-theme="high-contrast"],
+.wikihover-pinned-tooltip[data-wikihover-theme="high-contrast"] {
+  --wh-bg: #000000;
+  --wh-text: #ffffff;
+  --wh-text-secondary: #ffff00;
+  --wh-text-muted: #ffdd00;
+  --wh-content-text: #ffffff;
+  --wh-content-secondary: #ffff00;
+  --wh-border: #555555;
+  --wh-border-light: #333333;
+  --wh-header-bg: #1a1a1a;
+  --wh-tab-bg: #1a1a1a;
+  --wh-tab-hover-bg: #333333;
+  --wh-tab-active-bg: #000000;
+  --wh-accent: #ffff00;
+  --wh-link: #ffff00;
+  --wh-hover-bg: #1a1a1a;
+  --wh-card-bg: #1a1a1a;
+  --wh-glass-rgb: 0, 0, 0;
+  --wh-shadow: 0 8px 32px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(255, 255, 255, 0.3);
+  --wh-shadow-pinned: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* === CSS Isolation: protect tooltip from host page styles === */
+.wikihover-tooltip,
+.wikihover-pinned-tooltip {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: embed !important;
+  font-family: Arial, sans-serif !important;
+  line-height: 1.5 !important;
+  color: var(--wh-text) !important;
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+
+.wikihover-tooltip *,
+.wikihover-pinned-tooltip * {
+  direction: ltr !important;
+  box-sizing: border-box !important;
+  font-family: Arial, sans-serif !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-transform: none !important;
+  text-indent: 0 !important;
+  text-shadow: none !important;
+}
+
+.wikihover-tooltip button,
+.wikihover-pinned-tooltip button {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background: none !important;
+  border: none !important;
+  padding: 8px 8px !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  outline: none !important;
+  color: var(--wh-text-secondary) !important;
+  line-height: 1 !important;
+}
+
+.wikihover-tooltip img,
+.wikihover-pinned-tooltip img {
+  max-width: 100% !important;
+  border: none !important;
+}
+
+.wikihover-tooltip h3,
+.wikihover-tooltip h4,
+.wikihover-pinned-tooltip h3,
+.wikihover-pinned-tooltip h4 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: bold !important;
+  line-height: 1.3 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+
+.wikihover-tooltip a,
+.wikihover-pinned-tooltip a {
+  text-decoration: none !important;
+  color: var(--wh-link) !important;
+}
+
+.wikihover-tooltip p,
+.wikihover-pinned-tooltip p {
+  margin: 0 0 8px 0 !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* Name highlight styles */
+span.wikihover-name,
+span.wikihover-name[data-name] {
+  cursor: help;
+  color: inherit !important;
+  position: relative;
+  text-decoration: underline !important;
+  text-decoration-color: rgba(6, 69, 173, 0.35) !important;
+  text-decoration-thickness: 1px !important;
+  background-color: rgba(6, 69, 173, 0.12) !important;
+  background-image: none !important;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+span.wikihover-name:hover,
+span.wikihover-name[data-name]:hover {
+  background-color: rgba(6, 69, 173, 0.20) !important;
+  text-decoration-color: rgba(6, 69, 173, 0.55) !important;
+  z-index: 1;
+}
+
+/* Dark theme name highlights */
+html[data-wikihover-theme="dark"] span.wikihover-name {
+  background-color: rgba(88, 166, 255, 0.08) !important;
+  text-decoration-color: rgba(88, 166, 255, 0.25) !important;
+}
+html[data-wikihover-theme="dark"] span.wikihover-name:hover {
+  background-color: rgba(88, 166, 255, 0.16) !important;
+  text-decoration-color: rgba(88, 166, 255, 0.45) !important;
+}
+
+/* Pastel Blue theme name highlights */
+html[data-wikihover-theme="pastel-blue"] span.wikihover-name {
+  background-color: rgba(58, 123, 213, 0.06) !important;
+  text-decoration-color: rgba(58, 123, 213, 0.25) !important;
+}
+html[data-wikihover-theme="pastel-blue"] span.wikihover-name:hover {
+  background-color: rgba(58, 123, 213, 0.12) !important;
+  text-decoration-color: rgba(58, 123, 213, 0.45) !important;
+}
+
+/* Pastel Rose theme name highlights */
+html[data-wikihover-theme="pastel-rose"] span.wikihover-name {
+  background-color: rgba(213, 86, 106, 0.06) !important;
+  text-decoration-color: rgba(213, 86, 106, 0.25) !important;
+}
+html[data-wikihover-theme="pastel-rose"] span.wikihover-name:hover {
+  background-color: rgba(213, 86, 106, 0.12) !important;
+  text-decoration-color: rgba(213, 86, 106, 0.45) !important;
+}
+
+/* Pastel Green theme name highlights */
+html[data-wikihover-theme="pastel-green"] span.wikihover-name {
+  background-color: rgba(58, 173, 90, 0.06) !important;
+  text-decoration-color: rgba(58, 173, 90, 0.25) !important;
+}
+html[data-wikihover-theme="pastel-green"] span.wikihover-name:hover {
+  background-color: rgba(58, 173, 90, 0.12) !important;
+  text-decoration-color: rgba(58, 173, 90, 0.45) !important;
+}
+
+/* Pastel Lavender theme name highlights */
+html[data-wikihover-theme="pastel-lavender"] span.wikihover-name {
+  background-color: rgba(124, 90, 199, 0.06) !important;
+  text-decoration-color: rgba(124, 90, 199, 0.25) !important;
+}
+html[data-wikihover-theme="pastel-lavender"] span.wikihover-name:hover {
+  background-color: rgba(124, 90, 199, 0.12) !important;
+  text-decoration-color: rgba(124, 90, 199, 0.45) !important;
+}
+
+/* Sunset theme name highlights */
+html[data-wikihover-theme="sunset"] span.wikihover-name {
+  background-color: rgba(232, 114, 28, 0.06) !important;
+  text-decoration-color: rgba(232, 114, 28, 0.25) !important;
+}
+html[data-wikihover-theme="sunset"] span.wikihover-name:hover {
+  background-color: rgba(232, 114, 28, 0.12) !important;
+  text-decoration-color: rgba(232, 114, 28, 0.45) !important;
+}
+
+/* Ocean theme name highlights */
+html[data-wikihover-theme="ocean"] span.wikihover-name {
+  background-color: rgba(13, 148, 136, 0.06) !important;
+  text-decoration-color: rgba(13, 148, 136, 0.25) !important;
+}
+html[data-wikihover-theme="ocean"] span.wikihover-name:hover {
+  background-color: rgba(13, 148, 136, 0.12) !important;
+  text-decoration-color: rgba(13, 148, 136, 0.45) !important;
+}
+
+/* Cream theme name highlights */
+html[data-wikihover-theme="cream"] span.wikihover-name {
+  background-color: rgba(184, 134, 11, 0.06) !important;
+  text-decoration-color: rgba(184, 134, 11, 0.25) !important;
+}
+html[data-wikihover-theme="cream"] span.wikihover-name:hover {
+  background-color: rgba(184, 134, 11, 0.12) !important;
+  text-decoration-color: rgba(184, 134, 11, 0.45) !important;
+}
+
+/* Solarized Light theme name highlights */
+html[data-wikihover-theme="solarized-light"] span.wikihover-name {
+  background-color: rgba(38, 139, 210, 0.06) !important;
+  text-decoration-color: rgba(38, 139, 210, 0.25) !important;
+}
+html[data-wikihover-theme="solarized-light"] span.wikihover-name:hover {
+  background-color: rgba(38, 139, 210, 0.12) !important;
+  text-decoration-color: rgba(38, 139, 210, 0.45) !important;
+}
+
+/* Nord theme name highlights */
+html[data-wikihover-theme="nord"] span.wikihover-name {
+  background-color: rgba(136, 192, 208, 0.08) !important;
+  text-decoration-color: rgba(136, 192, 208, 0.25) !important;
+}
+html[data-wikihover-theme="nord"] span.wikihover-name:hover {
+  background-color: rgba(136, 192, 208, 0.16) !important;
+  text-decoration-color: rgba(136, 192, 208, 0.45) !important;
+}
+
+/* Dracula theme name highlights */
+html[data-wikihover-theme="dracula"] span.wikihover-name {
+  background-color: rgba(189, 147, 249, 0.08) !important;
+  text-decoration-color: rgba(189, 147, 249, 0.25) !important;
+}
+html[data-wikihover-theme="dracula"] span.wikihover-name:hover {
+  background-color: rgba(189, 147, 249, 0.16) !important;
+  text-decoration-color: rgba(189, 147, 249, 0.45) !important;
+}
+
+/* Monokai theme name highlights */
+html[data-wikihover-theme="monokai"] span.wikihover-name {
+  background-color: rgba(249, 38, 114, 0.08) !important;
+  text-decoration-color: rgba(249, 38, 114, 0.25) !important;
+}
+html[data-wikihover-theme="monokai"] span.wikihover-name:hover {
+  background-color: rgba(249, 38, 114, 0.16) !important;
+  text-decoration-color: rgba(249, 38, 114, 0.45) !important;
+}
+
+/* Solarized Dark theme name highlights */
+html[data-wikihover-theme="solarized-dark"] span.wikihover-name {
+  background-color: rgba(42, 161, 152, 0.08) !important;
+  text-decoration-color: rgba(42, 161, 152, 0.25) !important;
+}
+html[data-wikihover-theme="solarized-dark"] span.wikihover-name:hover {
+  background-color: rgba(42, 161, 152, 0.16) !important;
+  text-decoration-color: rgba(42, 161, 152, 0.45) !important;
+}
+
+/* Midnight theme name highlights */
+html[data-wikihover-theme="midnight"] span.wikihover-name {
+  background-color: rgba(122, 162, 247, 0.08) !important;
+  text-decoration-color: rgba(122, 162, 247, 0.25) !important;
+}
+html[data-wikihover-theme="midnight"] span.wikihover-name:hover {
+  background-color: rgba(122, 162, 247, 0.16) !important;
+  text-decoration-color: rgba(122, 162, 247, 0.45) !important;
+}
+
+/* High Contrast theme name highlights */
+html[data-wikihover-theme="high-contrast"] span.wikihover-name {
+  background-color: rgba(255, 255, 0, 0.08) !important;
+  text-decoration-color: rgba(255, 255, 0, 0.25) !important;
+}
+html[data-wikihover-theme="high-contrast"] span.wikihover-name:hover {
+  background-color: rgba(255, 255, 0, 0.16) !important;
+  text-decoration-color: rgba(255, 255, 0, 0.45) !important;
+}
+
+/* Keep pointer cursor when name is inside a link */
+a span.wikihover-name,
+a.wikihover-name {
+  cursor: pointer;
+}
+
+/* Processed container */
+.wikihover-processed {
+  display: inline;
+}
+
+/* Tooltip styles */
+.wikihover-tooltip {
+  position: fixed !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 482px !important;
+  height: auto !important;
+  max-height: 750px !important;
+  background: rgba(var(--wh-glass-rgb), 0.88) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--wh-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  z-index: 999999 !important;
+  font-family: Arial, sans-serif !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: scale(0.92) !important;
+  transform-origin: 50% 0 !important;
+  will-change: transform, opacity !important;
+  /* Exit transition: quick ease-in scale-down */
+  transition:
+    transform 0.18s ease-in,
+    opacity 0.15s ease-in !important;
+}
+
+/* Specular highlight — simulates light hitting the top edge of the glass */
+.wikihover-tooltip::before,
+.wikihover-pinned-tooltip::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 45% !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  border-radius: 16px 16px 0 0 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Fallback grow-origin when JS placement hasn't fired yet */
+.wikihover-tooltip[data-wh-placement="below"] {
+  transform-origin: 50% 0 !important;
+}
+.wikihover-tooltip[data-wh-placement="above"] {
+  transform-origin: 50% 100% !important;
+}
+
+.wikihover-tooltip.visible {
+  flex-direction: column !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  z-index: 9999999 !important;
+  pointer-events: auto !important;
+  /* Enter transition: spring pop */
+  transition:
+    transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.18s ease-out !important;
+}
+
+/* Hide all tooltips when one is visible */
+.wikihover-tooltip.visible ~ .wikihover-tooltip {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+.wikihover-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 15px !important;
+  background: rgba(var(--wh-glass-rgb), 0.68) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+  cursor: move !important;
+  user-select: none !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-header-buttons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.wikihover-title {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: var(--wh-text) !important;
+}
+
+.wikihover-pin {
+  cursor: pointer !important;
+  font-size: 14px !important;
+  color: var(--wh-text-muted) !important;
+  line-height: 1 !important;
+  transition: color 0.15s ease !important;
+}
+
+.wikihover-pin:hover {
+  color: var(--wh-accent) !important;
+}
+
+.wikihover-unmark {
+  cursor: pointer !important;
+  font-size: 14px !important;
+  color: var(--wh-text-muted) !important;
+  line-height: 1 !important;
+  transition: color 0.15s ease !important;
+}
+
+.wikihover-unmark:hover {
+  color: #cc3333 !important;
+}
+
+.wikihover-close {
+  cursor: pointer !important;
+  font-size: 20px !important;
+  color: var(--wh-text-muted) !important;
+  line-height: 1 !important;
+}
+
+.wikihover-close:hover {
+  color: var(--wh-text) !important;
+}
+
+.wikihover-fullscreen-btn {
+  cursor: pointer !important;
+  font-size: 16px !important;
+  padding: 0 4px !important;
+  opacity: 0.6 !important;
+  transition: opacity 0.2s !important;
+  line-height: 1 !important;
+}
+
+.wikihover-fullscreen-btn:hover {
+  opacity: 1 !important;
+}
+
+.wikihover-duplicate-pin {
+  cursor: pointer !important;
+  font-size: 14px !important;
+  color: var(--wh-text-muted) !important;
+  line-height: 1 !important;
+  transition: color 0.15s ease !important;
+}
+
+.wikihover-duplicate-pin:hover {
+  color: var(--wh-accent) !important;
+}
+
+.wikihover-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  border: none !important;
+  z-index: 99999999 !important;
+}
+
+/* Pinned tooltip */
+.wikihover-pinned-tooltip {
+  position: fixed !important;
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  z-index: 9999999 !important;
+  width: 482px !important;
+  max-height: 750px !important;
+  background: rgba(var(--wh-glass-rgb), 0.88) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--wh-shadow-pinned), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  font-family: Arial, sans-serif !important;
+  overflow: hidden !important;
+  pointer-events: auto !important;
+}
+
+/* Body wrapper: sidebar + content side by side */
+.wikihover-body {
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Sidebar navigation */
+.wikihover-sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 60px !important;
+  min-width: 60px !important;
+  padding: 8px 0 !important;
+  background: transparent !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
+  overflow: visible !important;
+  scrollbar-width: none !important;
+  gap: 4px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.wikihover-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.wikihover-tab {
+  padding: 8px 0 !important;
+  border: none !important;
+  border-left: 3px solid transparent !important;
+  border-radius: 0 6px 6px 0 !important;
+  background: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+}
+
+/* Favicon wrapper: static 28px icon, no dock scaling */
+.wikihover-tab-favicon-wrap {
+  width: 28px !important;
+  height: 28px !important;
+  flex-shrink: 0 !important;
+  border-radius: 6px !important;
+  display: block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+/* B&W base layer (always visible, behind color layer) */
+.wikihover-tab-favicon-wrap .wikihover-tab-favicon-bw {
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 6px !important;
+  filter: grayscale(1) !important;
+  object-fit: contain !important;
+  position: relative !important;
+  z-index: 0 !important;
+}
+
+/* Color layer: hidden by default, fades in when revealed */
+.wikihover-tab-favicon-wrap .wikihover-tab-favicon-color {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  border-radius: 6px !important;
+  z-index: 1 !important;
+}
+
+.wikihover-tab-favicon-wrap .wikihover-tab-favicon-color.wikihover-tab-favicon-revealed {
+  opacity: 1 !important;
+}
+
+/* Color layer img: no filter so it stays in color (overrides host page grayscale on img) */
+.wikihover-tab-favicon-wrap .wikihover-tab-favicon-color img {
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  border-radius: 6px !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+.wikihover-tab:hover {
+  background: none !important;
+}
+
+.wikihover-tab.active {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-left-color: var(--wh-accent) !important;
+}
+
+/* Content container — extra bottom padding so last content doesn’t sit under footer */
+.wikihover-content-container {
+  padding: 10px 10px 16px !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: transparent !important;
+  position: relative !important;
+  z-index: 1 !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(128, 128, 128, 0.3) transparent !important;
+}
+
+.wikihover-content-container::-webkit-scrollbar {
+  width: 4px;
+}
+.wikihover-content-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.wikihover-content-container::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 2px;
+}
+.wikihover-content-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+.wikihover-content {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.wikihover-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-imdb-content.active {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.wikihover-wiki-content, .wikihover-tvmaze-content {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Fix for TVMaze content to ensure it's properly displayed */
+.wikihover-tvmaze-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-powered-by {
+  text-align: center !important;
+  padding: 4px 24px 4px 15px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: rgba(var(--wh-glass-rgb), 0.3) !important;
+  border-radius: 0 0 16px 16px !important;
+  position: relative !important;
+  z-index: 5 !important;
+  flex-shrink: 0 !important;
+}
+
+.wikihover-powered-by a {
+  color: var(--wh-text-secondary) !important;
+  text-decoration: none !important;
+  font-size: 11px !important;
+}
+
+/* Action buttons with brand-colored backgrounds — preserve white text */
+.wikihover-tooltip .wikihover-action-btn,
+.wikihover-pinned-tooltip .wikihover-action-btn {
+  color: #fff !important;
+}
+
+.wikihover-powered-by a:hover {
+  color: var(--wh-link) !important;
+}
+
+/* Family tree: no card background — smooth continue with content above */
+.wikihover-family-tree {
+  background: transparent !important;
+  padding: 14px 0 28px !important;
+  margin-top: 16px !important;
+  border-top: 1px solid var(--wh-border, #e0e0e0) !important;
+}
+.wikihover-family-tree .wikihover-family-tree-inner {
+  background: transparent !important;
+}
+
+.wikihover-resize-handle {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  width: 16px !important;
+  height: 16px !important;
+  cursor: nwse-resize !important;
+  z-index: 10 !important;
+  background: linear-gradient(135deg, transparent 50%, var(--wh-text-muted) 50%, var(--wh-text-muted) 60%, transparent 60%, transparent 70%, var(--wh-text-muted) 70%, var(--wh-text-muted) 80%, transparent 80%) !important;
+  border-radius: 0 0 8px 0 !important;
+  opacity: 0.6 !important;
+  transition: opacity 0.2s !important;
+}
+
+.wikihover-resize-handle:hover {
+  opacity: 1 !important;
+}
+
+/* Wikipedia specific styles */
+.wikihover-thumbnail {
+  float: right !important;
+  max-width: 100px !important;
+  max-height: 100px !important;
+  margin: 0 0 10px 10px !important;
+  border-radius: 4px !important;
+}
+
+.wikihover-loader {
+  border: 3px solid var(--wh-border);
+  border-top: 3px solid var(--wh-accent);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: wikihover-spin 2s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes wikihover-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.wikihover-twitter-content {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wikihover-twitter-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Twitter specific styles */
+.wikihover-twitter-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--wh-border);
+}
+
+.wikihover-twitter-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wikihover-twitter-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.wikihover-twitter-info h4 {
+  margin: 0;
+  color: var(--wh-content-text);
+  font-size: 16px;
+}
+
+.wikihover-twitter-username {
+  color: var(--wh-content-secondary);
+  font-size: 14px;
+}
+
+.wikihover-twitter-stats {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0;
+  color: var(--wh-content-secondary);
+  font-size: 14px;
+}
+
+.wikihover-twitter-bio {
+  color: var(--wh-content-text);
+  font-size: 14px;
+  margin: 10px 0;
+  line-height: 1.4;
+}
+
+.wikihover-tweets {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wikihover-tweet {
+  padding: 12px;
+  border: 1px solid var(--wh-border);
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.wikihover-tweet:hover {
+  background-color: var(--wh-hover-bg);
+}
+
+.wikihover-tweet-text {
+  color: var(--wh-content-text);
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+
+.wikihover-tweet-metrics {
+  display: flex;
+  gap: 15px;
+  color: var(--wh-content-secondary);
+  font-size: 12px;
+}
+
+.wikihover-verified-badge {
+  color: #1d9bf0;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+/* Twitter match list styles */
+.wikihover-twitter-matches {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 482px;
+  overflow-y: auto;
+}
+
+.wikihover-twitter-match {
+  padding: 12px;
+  border: 1px solid var(--wh-border);
+  border-radius: 8px;
+  background-color: var(--wh-card-bg);
+}
+
+.wikihover-twitter-match .wikihover-twitter-profile {
+  margin-bottom: 10px;
+}
+
+.wikihover-twitter-match .wikihover-twitter-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.wikihover-twitter-profile-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #1DA1F2;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.wikihover-twitter-profile-link:hover {
+  background-color: #0c85d0;
+}
+
+/* Twitter X button in Wikipedia tab */
+.wikihover-x-button {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.wikihover-x-button a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: rgba(29, 161, 242, 0.1);
+  color: #1DA1F2;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.wikihover-x-button a:hover {
+  background-color: rgba(29, 161, 242, 0.2);
+}
+
+.wikihover-x-button svg {
+  flex-shrink: 0;
+}
+
+/* Instagram specific styles */
+.wikihover-instagram-content {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wikihover-instagram-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-instagram-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.wikihover-instagram-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--wh-border);
+  object-fit: cover;
+}
+
+.wikihover-instagram-info h4 {
+  margin: 0;
+  color: var(--wh-content-text);
+  font-size: 15px;
+}
+
+.wikihover-instagram-stats {
+  display: flex;
+  gap: 15px;
+  margin: 8px 0;
+  color: var(--wh-content-text);
+  font-size: 13px;
+}
+
+.wikihover-instagram-stats strong {
+  font-weight: 600;
+}
+
+.wikihover-instagram-bio {
+  color: var(--wh-content-text);
+  font-size: 13px;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.wikihover-instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.wikihover-instagram-media-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--wh-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wikihover-instagram-media-item video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Instagram Reels / Video autoplay area expansion */
+.wikihover-reel-expanded-player {
+  position: relative !important;
+  background: #000 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  animation: wikihover-reel-expand 0.2s ease-out;
+}
+
+@keyframes wikihover-reel-expand {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.wikihover-reel-expanded-player video {
+  width: 100% !important;
+  object-fit: contain !important;
+  background: #000 !important;
+  display: block !important;
+}
+
+.wikihover-reel-expanded-player img {
+  width: 100% !important;
+  object-fit: contain !important;
+  background: #000 !important;
+}
+
+.wikihover-player-btn {
+  transition: color 0.2s !important;
+}
+.wikihover-player-btn:hover {
+  color: #E1306C !important;
+}
+.wikihover-next-btn {
+  transition: color 0.2s, background 0.2s !important;
+}
+.wikihover-next-btn:hover {
+  color: #E1306C !important;
+  background: rgba(255,255,255,0.25) !important;
+}
+
+/* TikTok specific styles */
+.wikihover-tiktok-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.wikihover-tiktok-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.wikihover-tiktok-info h4 {
+  margin: 0;
+  color: var(--wh-content-text);
+  font-size: 15px;
+}
+
+.wikihover-tiktok-stats {
+  display: flex;
+  gap: 15px;
+  margin: 8px 0;
+  color: var(--wh-content-text);
+  font-size: 13px;
+}
+
+.wikihover-tiktok-stats strong {
+  font-weight: 600;
+}
+
+.wikihover-tiktok-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.wikihover-tiktok-media-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--wh-card-bg, #f5f5f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wikihover-tiktok-expanded {
+  animation: wikihover-tiktok-expand 0.2s ease-out;
+}
+
+@keyframes wikihover-tiktok-expand {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wikihover-tiktok-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Football specific styles */
+.wikihover-football-content {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wikihover-football-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-football-profile {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid var(--wh-border-light) !important;
+}
+
+.wikihover-football-photo {
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  border: 2px solid var(--wh-border) !important;
+}
+
+.wikihover-football-info {
+  flex: 1 !important;
+}
+
+.wikihover-football-info h4 {
+  margin: 0 0 4px 0 !important;
+  font-size: 15px !important;
+  color: var(--wh-content-text) !important;
+}
+
+.wikihover-football-info .wikihover-football-meta {
+  font-size: 12px !important;
+  color: var(--wh-text-secondary) !important;
+  line-height: 1.4 !important;
+}
+
+.wikihover-football-team {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 0 !important;
+  border-bottom: 1px solid var(--wh-border-light) !important;
+  margin-bottom: 10px !important;
+}
+
+.wikihover-football-team img {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain !important;
+}
+
+.wikihover-football-team-info {
+  display: flex !important;
+  flex-direction: column !important;
+  font-size: 13px !important;
+}
+
+.wikihover-football-team-name {
+  font-weight: 600 !important;
+  color: var(--wh-text) !important;
+}
+
+.wikihover-football-league-name {
+  font-size: 11px !important;
+  color: var(--wh-text-muted) !important;
+}
+
+.wikihover-football-stats {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 6px !important;
+  margin-bottom: 12px !important;
+}
+
+.wikihover-football-stat {
+  background: var(--wh-card-bg) !important;
+  border-radius: 6px !important;
+  padding: 8px 4px !important;
+  text-align: center !important;
+}
+
+.wikihover-football-stat-value {
+  display: block !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--wh-text) !important;
+}
+
+.wikihover-football-stat-label {
+  display: block !important;
+  font-size: 10px !important;
+  color: var(--wh-text-muted) !important;
+  text-transform: uppercase !important;
+  margin-top: 2px !important;
+}
+
+.wikihover-football-section-title {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--wh-text-secondary) !important;
+  margin: 10px 0 6px 0 !important;
+  padding-bottom: 4px !important;
+  border-bottom: 1px solid var(--wh-border-light) !important;
+}
+
+.wikihover-football-highlights {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+}
+
+.wikihover-football-highlight {
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  background: var(--wh-card-bg) !important;
+  cursor: pointer !important;
+  position: relative !important;
+}
+
+.wikihover-football-highlight-thumb {
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.wikihover-football-highlight-play {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(0,0,0,0.6) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: white !important;
+  font-size: 16px !important;
+  pointer-events: none !important;
+}
+
+.wikihover-football-highlight-title {
+  font-size: 11px !important;
+  color: var(--wh-text) !important;
+  padding: 4px 6px !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.wikihover-football-highlight iframe {
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+  border: none !important;
+  display: block !important;
+}
+
+.wikihover-football-career {
+  margin-top: 8px !important;
+}
+
+.wikihover-football-career-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 4px 0 !important;
+  font-size: 12px !important;
+  color: var(--wh-text-secondary) !important;
+  border-bottom: 1px solid var(--wh-border-light) !important;
+}
+
+.wikihover-football-career-item img {
+  width: 20px !important;
+  height: 20px !important;
+  object-fit: contain !important;
+}
+
+.wikihover-football-career-item:last-child {
+  border-bottom: none !important;
+}
+
+/* TikTok specific styles */
+.wikihover-tiktok-content {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wikihover-tiktok-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-tiktok-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.wikihover-tiktok-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--wh-border);
+  object-fit: cover;
+}
+
+.wikihover-tiktok-info h4 {
+  margin: 0;
+  color: var(--wh-content-text);
+  font-size: 15px;
+}
+
+.wikihover-tiktok-stats {
+  display: flex;
+  gap: 15px;
+  margin: 8px 0;
+  color: var(--wh-content-text);
+  font-size: 13px;
+}
+
+.wikihover-tiktok-stats strong {
+  font-weight: 600;
+}
+
+.wikihover-tiktok-bio {
+  color: var(--wh-content-text);
+  font-size: 13px;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.wikihover-tiktok-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.wikihover-tiktok-video-item {
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--wh-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wikihover-tiktok-video-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.wikihover-tiktok-video-item video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* TikTok expanded video player */
+.wikihover-tiktok-expanded-player {
+  position: relative !important;
+  background: #000 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  animation: wikihover-reel-expand 0.2s ease-out;
+}
+
+.wikihover-tiktok-expanded-player video {
+  width: 100% !important;
+  object-fit: contain !important;
+  background: #000 !important;
+  display: block !important;
+}
+
+.wikihover-tiktok-player-btn {
+  transition: color 0.2s;
+}
+
+.wikihover-tiktok-player-btn:hover {
+  color: #fe2c55 !important;
+}
+
+.wikihover-tiktok-next-btn {
+  transition: color 0.2s, background 0.2s;
+}
+
+.wikihover-tiktok-next-btn:hover {
+  color: #fe2c55 !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Pinterest specific styles */
+.wikihover-pinterest-content {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wikihover-pinterest-content.active {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.wikihover-pinterest-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.wikihover-pinterest-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--wh-border);
+  object-fit: cover;
+}
+
+.wikihover-pinterest-stats {
+  display: flex;
+  gap: 15px;
+  margin: 8px 0;
+  color: var(--wh-content-text);
+  font-size: 13px;
+}
+
+.wikihover-pinterest-bio {
+  color: var(--wh-content-text);
+  font-size: 13px;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.wikihover-pinterest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.wikihover-pinterest-pin {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--wh-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: opacity 0.15s ease;
+}
+
+.wikihover-pinterest-pin:hover {
+  opacity: 0.85;
+}
+
+.wikihover-pinterest-pin img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.wikihover-pinterest-pin-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 6px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  color: white !important;
+  font-size: 10px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Pinterest expanded image viewer */
+.wikihover-pinterest-expanded {
+  position: relative !important;
+  background: #000 !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  animation: wikihover-reel-expand 0.2s ease-out;
+}
+
+.wikihover-pinterest-expanded-img {
+  width: 100% !important;
+  max-height: 400px !important;
+  object-fit: contain !important;
+  background: #000 !important;
+  display: block !important;
+}
+
+.wikihover-pinterest-expanded-close {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  width: 28px !important;
+  height: 28px !important;
+  background: rgba(0,0,0,0.6) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  z-index: 15 !important;
+  line-height: 1 !important;
+  transition: background 0.2s !important;
+}
+
+.wikihover-pinterest-expanded-close:hover {
+  background: rgba(0,0,0,0.85) !important;
+}
+
+.wikihover-pinterest-expanded-nav {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: rgba(0,0,0,0.5) !important;
+  color: white !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  z-index: 15 !important;
+  transition: background 0.2s !important;
+  user-select: none !important;
+}
+
+.wikihover-pinterest-expanded-nav:hover {
+  background: rgba(0,0,0,0.8) !important;
+}
+
+.wikihover-pinterest-nav-prev {
+  left: 8px !important;
+}
+
+.wikihover-pinterest-nav-next {
+  right: 8px !important;
+}
+
+.wikihover-pinterest-expanded-caption {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: linear-gradient(transparent, rgba(0,0,0,0.75)) !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 20px 12px 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}

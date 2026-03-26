@@ -610,68 +610,39 @@
   }
 })();
 </script>
-    <!-- Chrome API shim must load first so content.js can run without the extension -->
-    <script src="demo-shim.js"></script>
-    <script src="compromise.min.js"></script>
-    <script src="hebrew_names.js"></script>
-    <script src="content.js"></script>
+    <!-- WikiHover Player SDK -->
     <script>
-      /* WikiHover Demo: pre-warm Wikipedia cache so first hover is instant */
-      (function () {
-        const DEMO_NAMES = [
-          'Bryan Cranston', 'Jennifer Aniston', 'Tom Hanks', 'Meryl Streep',
-          'Steven Spielberg', 'Christopher Nolan', 'Stephen King',
-          'Oprah Winfrey', 'Serena Williams', 'LeBron James'
-        ];
-        const PREFIX = 'wikihover_demo_';
-
-        async function prewarmName(name) {
-          const storageKey = PREFIX + 'wiki_' + name;
-          if (localStorage.getItem(storageKey) !== null) return; // already warm — skip fetch
-
-          try {
-            const summaryResp = await fetch(
-              'https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(name)
-            );
-            if (!summaryResp.ok) return;
-            const data = await summaryResp.json();
-            if (!data || !data.title) return;
-
-            // Fetch full extract (matches content.js: exchars=4000 via w/api.php)
-            let extract = data.extract_html || data.extract || '';
-            try {
-              const extResp = await fetch(
-                'https://en.wikipedia.org/w/api.php?action=query&titles=' +
-                encodeURIComponent(data.title) +
-                '&prop=extracts&exchars=4000&exlimit=1&format=json&origin=*'
-              );
-              if (extResp.ok) {
-                const extData = await extResp.json();
-                const pages = extData.query && extData.query.pages;
-                if (pages) {
-                  const page = Object.values(pages)[0];
-                  if (page && page.extract) extract = page.extract;
-                }
-              }
-            } catch (e) { /* use summary extract as fallback */ }
-
-            const result = {
-              title: data.title,
-              description: data.description || '',
-              extract,
-              url: (data.content_urls && data.content_urls.desktop && data.content_urls.desktop.page) ||
-                   ('https://en.wikipedia.org/wiki/' + encodeURIComponent(data.title)),
-              thumbnail: data.thumbnail ? data.thumbnail.source : undefined,
-              originalimage: data.originalimage ? data.originalimage.source : '',
-              wikibase_item: data.wikibase_item || '',
-              timestamp: Date.now()
-            };
-            try { localStorage.setItem(storageKey, JSON.stringify(result)); } catch (e) {}
-          } catch (e) { /* silent — content.js fetches on demand if this fails */ }
-        }
-
-        DEMO_NAMES.forEach(prewarmName); // all fire in parallel
-      })();
+      window.WikiHoverConfig = {
+        token: "eyJhbGciOiJI\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022",
+        orgId: "portal-singleton",
+        feeds: {
+          "igog":                          { id: 23, name: "igog",                          type: "managed" },
+          "imdb":                          { id: 33, name: "imdb",                          type: "managed" },
+          "tiktok":                        { id: 34, name: "tiktok",                        type: "managed" },
+          "tvmaze":                        { id: 1,  name: "tvmaze",                        type: "managed" },
+          "instagram":                     { id: 26, name: "instagram",                     type: "managed" },
+          "wikipedia":                     { id: 5,  name: "wikipedia",                     type: "managed" },
+          "xtweitter":                     { id: 24, name: "xtweitter",                     type: "managed" },
+          "polymarket":                    { id: 2,  name: "polymarket",                    type: "managed" },
+          "resolveentityonpage":           { id: 32, name: "resolveentityonpage",           type: "managed" },
+          "wikidatasparqlwikidatasparql":  { id: 6,  name: "wikidatasparqlwikidatasparql",  type: "managed" }
+        },
+        feedResponseMap: {
+          "IG OG":                            "igog",
+          "TVMaze":                           "tvmaze",
+          "Wikipedia":                        "wikipedia",
+          "User TV Maze":                     "tvmaze",
+          "IMDB - Lambda":                    "imdb",
+          "TikTok - Lamba":                   "tiktok",
+          "PolyMarket Public":                "polymarket",
+          "ResolveEntityOnPage":              "resolveentityonpage",
+          "Instagram Bright Data":            "instagram",
+          "Wikidata SPARQL,Wikidata SPARQL":  "wikidatasparqlwikidatasparql"
+        },
+        server: "https://feedapi.wikihover.com",
+        defaultFeed: 5
+      };
     </script>
+    <script src="dist/wikihover-player.js"></script>
 </body>
 </html>
